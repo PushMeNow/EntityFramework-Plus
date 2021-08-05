@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Azure.Cosmos.Table;
 #if EF5
 using System.Data.Objects;
 
@@ -23,7 +24,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 namespace Z.EntityFramework.Plus
 {
     /// <summary>An audit entry.</summary>
-    public class AuditEntry
+    public class AuditEntry : TableEntity
     {
 #if EF5 || EF6
         public void Build(Audit parent, ObjectStateEntry entry)
@@ -91,7 +92,7 @@ namespace Z.EntityFramework.Plus
         /// <summary>Gets or sets the identifier of the audit entry.</summary>
         /// <value>The identifier of the audit entry.</value>
         [Column(Order = 0)]
-        public int AuditEntryID { get; set; }
+        public Guid AuditEntryID { get; set; }
 
         /// <summary>Gets or sets who created this object.</summary>
         /// <value>Describes who created this object.</value>

@@ -55,6 +55,7 @@
   <Import Project="..\shared\Z.EF.Plus.QueryIncludeOptimized.Shared\Z.EF.Plus.QueryIncludeOptimized.Shared.projitems" Label="Shared" />
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.8" />
     <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
     <PackageReference Include="System.Reflection.Emit" Version="4.6.0" />

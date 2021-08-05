@@ -8,6 +8,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Azure.Cosmos.Table;
 
 
 #if EF5
@@ -24,7 +25,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 namespace Z.EntityFramework.Plus
 {
     /// <summary>An audit entry property.</summary>
-    public class AuditEntryProperty
+    public class AuditEntryProperty : TableEntity
     {
 #if EF5 || EF6
         public void Build(AuditEntry parent, string propertyName, object oldValue, DbUpdatableDataRecord dbUpdatableDataRecord, int dbUpdatableDataRecordPosition)
@@ -146,12 +147,12 @@ namespace Z.EntityFramework.Plus
         /// <summary>Gets or sets the identifier of the audit entry property.</summary>
         /// <value>The identifier of the audit entry property.</value>
         [Column(Order = 0)]
-        public int AuditEntryPropertyID { get; set; }
+        public Guid AuditEntryPropertyID { get; set; }
 
         /// <summary>Gets or sets the identifier of the audit entry.</summary>
         /// <value>The identifier of the audit entry.</value>
         [Column(Order = 1)]
-        public int AuditEntryID { get; set; }
+        public Guid AuditEntryID { get; set; }
 
         /// <summary>Gets or sets the parent.</summary>
         /// <value>The parent.</value>
